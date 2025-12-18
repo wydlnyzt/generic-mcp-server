@@ -21,8 +21,10 @@ mcp-ts/
 │   ├── server.ts         # MCP server core logic
 │   ├── tool-base.ts      # Tool base class definition
 │   ├── tool-manager.ts   # Tool manager
-│   └── tools/
-│       └── sample.ts     # Sample tool: user search
+│   ├── tools/
+│   │   └── sample-tool.ts # Sample tool: user search
+│   └── utils/
+│       └── api-client.ts # API client utility
 ├── package.json          # Project configuration and dependencies
 ├── tsconfig.json         # TypeScript configuration
 ├── LICENSE               # License file
@@ -34,24 +36,22 @@ mcp-ts/
 ### Requirements
 
 - Node.js 16+ 
-- npm or yarn
+- pnpm
 
 ### Install Dependencies
 
 ```bash
-npm install
+pnpm install
 ```
-
-**Note**: The `prepare` script will automatically build the project after installation.
 
 ### Build and Run
 
 ```bash
 # Build project
-npm run build
+pnpm run build
 
 # Start the server
-npm start
+pnpm start
 ```
 
 ### Test Server
@@ -59,7 +59,7 @@ npm start
 Use MCP Inspector to test the server:
 
 ```bash
-npm run inspector
+pnpm run inspector
 ```
 
 This will start an interactive inspector where you can test the tool functionality.
@@ -113,7 +113,7 @@ static initialize(): void {
 
 1. First, build the project:
 ```bash
-npm run build
+pnpm run build
 ```
 
 2. Locate the Claude Desktop configuration file:
@@ -147,7 +147,7 @@ For other MCP-compatible desktop applications, you typically need to:
 2. Set runtime environment: Node.js  
 3. Configure environment variables (optional):
    - `SERVER_NAME`: Server name
-   - You can also use `npm start` command after building the project
+   - You can also use `pnpm start` command after building the project
 
 ### Verify Configuration
 
@@ -157,21 +157,19 @@ After configuration, you should be able to see the following tools in the deskto
 
 ## Available Scripts
 
-- `npm start`: Start the MCP server (requires build first)
-- `npm run build`: Build project to `dist/` directory and make scripts executable
-- `npm run inspector`: Build and start MCP Inspector for debugging and testing
-- `npm run prepare`: Pre-build script (runs automatically during installation)
+- `pnpm start`: Start the MCP server (requires build first)
+- `pnpm run build`: Build project to `dist/` directory
+- `pnpm run inspector`: Build and start MCP Inspector for debugging and testing
 
 ### Dependencies
 
 #### Core Dependencies
 - `@modelcontextprotocol/sdk` (^1.12.3): Official SDK for MCP protocol
-- `zod` (^3.25.64): Runtime type validation and schema definition
+- `zod` (^4.2.1): Runtime type validation and schema definition
 
 #### Development Dependencies
 - `typescript` (^5.8.3): TypeScript compiler
-- `@types/node` (^24.0.3): Node.js type definitions  
-- `shx` (^0.4.0): Cross-platform shell command tool for executable permissions
+- `@types/node` (^24.0.3): Node.js type definitions
 
 ## License
 

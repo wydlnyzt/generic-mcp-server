@@ -1,4 +1,4 @@
-import z from 'zod'
+import { z } from 'zod'
 import { ToolBase } from '../tool-base'
 
 const TOOL_NAME = `wydln-get-user`
@@ -15,16 +15,18 @@ const users = [
     },
 ]
 
+const searchSchema = z.object({
+    name: z.string().optional().describe('User name to search'),
+    email: z.string().optional().describe('User email to search'),
+})
+
 export class SearchUserTool extends ToolBase {
     constructor() {
         super(TOOL_NAME, TOOL_DESC)
-        this.schema = z.object({
-            name: z.string().optional().describe('User name to search'),
-            email: z.string().optional().describe('User email to search'),
-        })
+        this.schema = searchSchema
     }
 
-    execute(args?: z.infer<typeof this.schema>): string {
+    execute(args?: z.infer<typeof searchSchema>): string {
         const { name, email } = args || {}
         const result = users.filter(
             (user) =>
