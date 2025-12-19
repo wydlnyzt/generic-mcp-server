@@ -1,4 +1,4 @@
-# MCP-TS
+# Generic MCP Server
 
 An MCP (Model Context Protocol) server architecture developed using TypeScript. This project provides an extensible framework for building and managing MCP tools, enabling AI applications to interact with external tools and services through a standardized protocol.
 
